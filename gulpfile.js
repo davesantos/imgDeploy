@@ -16,7 +16,7 @@ var img = {
 
 var svg = {
   src: 'svg/*.svg',
-  dest: 'deploy'
+  dest: 'svg'
 }
 
 gulp.task('clean', function(cb) {
@@ -46,10 +46,11 @@ gulp.task('resize', function () {
       .pipe(gulp.dest(img.dest));
 });
 
-gulp.task('svg', function() {
+gulp.task('svgstore', function () {
   return gulp.src(svg.src)
-    .pipe(svgmin())
-    .pipe(gulp.dest(svg.dest));
+      .pipe(svgmin())
+      .pipe(svgstore())
+      .pipe(gulp.dest(svg.dest));
 });
 
 gulp.task('default', ['optimize']);
