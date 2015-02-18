@@ -49,7 +49,7 @@ gulp.task('resize', function () {
 gulp.task('svg', function(){
   return gulp.src(svg.src)
   .pipe(svgmin())
-  .pipe(gulp.dest(svg.dest));
+  .pipe(gulp.dest('svg'));
 });
 
 gulp.task('svgstore', function () {
