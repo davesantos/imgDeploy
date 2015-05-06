@@ -9,13 +9,13 @@ var svgmin = require('gulp-svgmin'),
     svgstore = require('gulp-svgstore');
 
 var img = {
-  src: 'photos/*.{jpg,jpeg,png}',
+  src: 'source/*.{jpg,jpeg,png}',
   dest: 'deploy',
   width: 1080
 };
 
 var svg = {
-  src: 'svg/*.svg',
+  src: 'source/*.svg',
   dest: 'deploy'
 }
 
@@ -59,4 +59,4 @@ gulp.task('svgstore', function () {
       .pipe(gulp.dest(svg.dest));
 });
 
-gulp.task('default', ['clean','optimize']);
+gulp.task('default', ['clean','svg', 'optimize']);
