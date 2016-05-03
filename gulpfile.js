@@ -10,13 +10,13 @@ var svgmin = require('gulp-svgmin'),
 
 var img = {
   src: 'source/*.{jpg,jpeg,png}',
-  dest: 'deploy',
+  dest: 'dist',
   width: 1080
 };
 
 var svg = {
-  src: 'source/*.svg',
-  dest: 'deploy'
+  src: 'svg/*.svg',
+  dest: 'dist'
 }
 
 gulp.task('clean', function(cb) {
@@ -49,7 +49,7 @@ gulp.task('resize', function () {
 gulp.task('svg', function(){
   return gulp.src(svg.src)
   .pipe(svgmin())
-  .pipe(gulp.dest('svg'));
+  .pipe(gulp.dest(svg.dest));
 });
 
 gulp.task('svgstore', function () {

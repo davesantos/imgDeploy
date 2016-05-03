@@ -1,4 +1,6 @@
 .DS_Store
-deploy
+dist
 node_modules
 photos
+svg
+source
