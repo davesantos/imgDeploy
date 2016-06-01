@@ -5,8 +5,7 @@ var gulp = require('gulp'),
     newer = require('gulp-newer'),
     rename = require('gulp-rename');
 
-var svgmin = require('gulp-svgmin'),
-    svgstore = require('gulp-svgstore');
+var svgstore = require('gulp-svgstore');
 
 var img = {
   src: 'source/*.{jpg,jpeg,png}',
@@ -23,10 +22,17 @@ gulp.task('clean', function(cb) {
   del([img.dest], cb);
 });
 
-gulp.task('optimize', function(){
+gulp.task('image', function(){
+  gulp.src(img.src)
+    // .pipe(newer(img.dest))
+    .pipe(imagemin({ verbose: true }))
+    .pipe(gulp.dest(img.dest));
+});
+
+gulp.task('image:web', function(){
   gulp.src(img.src)
     .pipe(newer(img.dest))
-    .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
+    .pipe(imagemin({ verbose: true, optimizationLevel: 3, progressive: true, interlaced: true }))
     .pipe(gulp.dest(img.dest));
 });
 
@@ -48,15 +54,15 @@ gulp.task('resize', function () {
 
 gulp.task('svg', function(){
   return gulp.src(svg.src)
-  .pipe(svgmin())
+  .pipe(imagemin())
   .pipe(gulp.dest(svg.dest));
 });
 
 gulp.task('svgstore', function () {
   return gulp.src(svg.src)
-      .pipe(svgmin())
+      .pipe(imagemin())
       .pipe(svgstore())
       .pipe(gulp.dest(svg.dest));
 });
 
-gulp.task('default', ['clean','svg', 'optimize']);
+gulp.task('default', ['clean','svg', 'image']);
