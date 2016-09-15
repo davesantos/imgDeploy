@@ -1,11 +1,10 @@
 var gulp = require('gulp'),
     del = require('del'),
-    imagemin = require('gulp-imagemin'),
     imageResize = require('gulp-image-resize'),
+    imagemin = require('gulp-imagemin'),
     newer = require('gulp-newer'),
-    rename = require('gulp-rename');
-
-var svgstore = require('gulp-svgstore');
+    rename = require('gulp-rename'),
+    svgstore = require('gulp-svgstore');
 
 var img = {
   src: 'source/*.{jpg,jpeg,png}',
