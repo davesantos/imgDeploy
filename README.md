@@ -1,5 +1,6 @@
 imgDeploy
 ===
+[![Build Status](https://travis-ci.org/davesantos/imgDeploy.svg?branch=master)](https://travis-ci.org/davesantos/imgDeploy)
 
 This gulp setup resizes, renames, and optimizes batches of raster image and scalable vector files.
 
@@ -17,10 +18,10 @@ Now:
 npm install
 ```
 
-## Getting started
+## Usage
 
-Type
+`gulp svg` optimizes SVG files.
 
-```
-gulp
-```
+`gulp image` optimizes all image files (JPG/PNG)
+
+`gulp clean` removes entire dist folder and its contents.
