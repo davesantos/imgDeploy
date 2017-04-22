@@ -3,7 +3,7 @@ imgDeploy
 
 This gulp setup resizes, renames, and optimizes batches of raster image and scalable vector files.
 
-### Installation
+## Installation
 
 Make sure you have gulp installed:
 
@@ -11,15 +11,16 @@ Make sure you have gulp installed:
 npm install --global gulp-cli
 ```
 
-then:
+Now:
 
 ```
 npm install
 ```
 
-### Getting started
+## Getting started
 
 Type
+
 ```
 gulp
 ```
