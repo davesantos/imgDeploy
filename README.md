@@ -7,7 +7,7 @@ This gulp setup resizes, renames, and optimizes batches of raster image and scal
 
 Make sure you have gulp installed:
 
-````
+```
 npm install --global gulp-cli
 ```
 
