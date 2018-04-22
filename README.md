@@ -12,7 +12,7 @@ Make sure you have gulp installed:
 npm install --global gulp-cli
 ```
 
-Now:
+Then:
 
 ```
 npm install
