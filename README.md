@@ -18,6 +18,13 @@ Then:
 npm install
 ```
 
+## Dependancies
+
+```
+brew install imagemagick
+brew install graphicsmagick
+```
+
 ## Usage
 
 `gulp svg` optimizes SVG files.
