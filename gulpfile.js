@@ -1,31 +1,30 @@
 'use strict';
 
-var gulp = require('gulp');
-var del = require('del');
-var imagemin = require('gulp-imagemin');
-var imageResize = require('gulp-image-resize');
-var newer = require('gulp-newer');
-var rename = require('gulp-rename');
-var svgstore = require('gulp-svgstore');
+const gulp = require('gulp');
+const del = require('del');
+const imagemin = require('gulp-imagemin');
+const imageResize = require('gulp-image-resize');
+const newer = require('gulp-newer');
+const rename = require('gulp-rename');
+const svgstore = require('gulp-svgstore');
 
-var imgFiles = [
-  'source/*.{jpg,jpeg,png}'
+const imgFiles = [
+  'source/**/*.{jpg,jpeg,png}'
 ]
 
-var svgFiles = [
-  'svg/*.svg'
+const svgFiles = [
+  'source/**/*.svg'
 ]
 
-var img = {
+const img = {
   dest: 'dist',
   width: 1080
 };
 
-var svg = {
+const svg = {
   src: 'svg/*.svg',
   dest: 'dist'
 }
-
 
 gulp.task('clean', gulp.series(deleteFiles));
 
@@ -35,7 +34,7 @@ function deleteFiles(done) {
 
 gulp.task('image', function(){
 
- var stream = gulp.src(imgFiles)
+ const stream = gulp.src(imgFiles)
   .pipe(imagemin({
     verbose: true
   }))
@@ -45,7 +44,7 @@ gulp.task('image', function(){
 });
 
 gulp.task('image:web', function(){
-  var stream = gulp.src(imgFiles)
+  const stream = gulp.src(imgFiles)
     .pipe(newer(img.dest))
     .pipe(imagemin({
       verbose: true,
@@ -57,13 +56,11 @@ gulp.task('image:web', function(){
   return stream;
 })
 
-
 gulp.task('resize', function(){
-
-  var stream = gulp.src(imgFiles)
+  const stream = gulp.src(imgFiles)
     .pipe(newer(img.dest))
     .pipe(imageResize({
-      filter: Catrom,
+      filter: "Catrom",
       imageMagick: true,
       noProfile: true,
       width: img.width
@@ -78,33 +75,32 @@ gulp.task('resize', function(){
     }))
     .pipe(gulp.dest(img.dest));
   return stream;
-
 });
 
 gulp.task('svg', function() {
-  var stream = gulp.src(svgFiles)
-    .pipe(imagemin())
+  const stream = gulp.src(svgFiles)
+    .pipe(imagemin({
+      svgoPlugins: [{removeViewBox: true}]
+    }))
     .pipe(gulp.dest(svg.dest));
   return stream;
 });
 
 gulp.task('svgstore', function() {
-  var stream = gulp.src(svgFiles)
+  const stream = gulp.src(svgFiles)
     .pipe(imagemin())
     .pipe(svgstore())
     .pipe(gulp.dest(svg.dest));
   return stream;
 });
 
-gulp.task('travis', gulp.series(gulp.parallel('svg','svgstore','image','clean', 'resize'), function(done){
-  process.exit(0);
-  done();
+gulp.task('travis', gulp.series(gulp.parallel('svg','svgstore','image','clean', 'resize'), function(){
+  return process.exit(0);
 }));
 
 function processExit() {
   process.exit(0);
   done()
 }
-
 
 gulp.task('default', gulp.series('clean', gulp.parallel('svg', 'image')));
