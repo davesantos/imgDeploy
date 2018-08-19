@@ -63,9 +63,10 @@ gulp.task('resize', function(){
   var stream = gulp.src(imgFiles)
     .pipe(newer(img.dest))
     .pipe(imageResize({
-      width: img.width,
-      crop: false,
-      upscale: false
+      filter: Catrom,
+      imageMagick: true,
+      noProfile: true,
+      width: img.width
     }))
     .pipe(imagemin({
       optimizationLevel: 3,
