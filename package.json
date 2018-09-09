@@ -1,7 +1,9 @@
 {
   "name": "imgDeploy",
-  "author": "Dave Santos <info@davesantos.com>",
+  "author": "Dave Santos <info@davesantos.com> (https://davesantos.com)",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "del": "3.0.0",
     "gulp": "^4.0.0",
     "gulp-image-resize": "^0.13.0",
@@ -14,6 +16,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/davesantos/imgDeploy.git"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
   },
   "dependencies": {
     "lodash": "^4.17.10",
