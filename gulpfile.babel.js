@@ -17,48 +17,48 @@ const svgFiles = [
 ]
 
 const img = {
-  dest: 'dist',
+  dist: 'dist',
   width: 1080
 };
 
 const svg = {
   src: 'svg/*.svg',
-  dest: 'dist'
+  dist: 'dist'
 }
 
 gulp.task('clean', gulp.series(deleteFiles));
 
 function deleteFiles(done) {
-  return del([img.dest], done);
+  return del([img.dist], done);
 }
 
-gulp.task('image', function(){
+gulp.task('image', () => {
 
  const stream = gulp.src(imgFiles)
   .pipe(imagemin({
     verbose: true
   }))
-  .pipe(gulp.dest(img.dest));
+  .pipe(gulp.dest(img.dist));
   return stream;
 
 });
 
-gulp.task('image:web', function(){
+gulp.task('image:web', () => {
   const stream = gulp.src(imgFiles)
-    .pipe(newer(img.dest))
+    .pipe(newer(img.dist))
     .pipe(imagemin({
       verbose: true,
       optimizationLevel: 3,
       progressive: true,
       interlaced: true
     }))
-    .pipe(gulp.dest(img.dest));
+    .pipe(gulp.dest(img.dist));
   return stream;
 })
 
-gulp.task('resize', function(){
+gulp.task('resize', () => {
   const stream = gulp.src(imgFiles)
-    .pipe(newer(img.dest))
+    .pipe(newer(img.dist))
     .pipe(imageResize({
       filter: "Catrom",
       imageMagick: true,
@@ -73,34 +73,29 @@ gulp.task('resize', function(){
     .pipe(rename({
       suffix: "_" + img.width.toString()
     }))
-    .pipe(gulp.dest(img.dest));
+    .pipe(gulp.dest(img.dist));
   return stream;
 });
 
-gulp.task('svg', function() {
+gulp.task('svg', () => {
   const stream = gulp.src(svgFiles)
     .pipe(imagemin({
       svgoPlugins: [{removeViewBox: true}]
     }))
-    .pipe(gulp.dest(svg.dest));
+    .pipe(gulp.dest(svg.dist));
   return stream;
 });
 
-gulp.task('svgstore', function() {
+gulp.task('svgstore', () => {
   const stream = gulp.src(svgFiles)
     .pipe(imagemin())
     .pipe(svgstore())
-    .pipe(gulp.dest(svg.dest));
+    .pipe(gulp.dest(svg.dist));
   return stream;
 });
 
-gulp.task('travis', gulp.series(gulp.parallel('svg','svgstore','image','clean', 'resize'), function(){
+gulp.task('travis', gulp.series(gulp.parallel('svg','svgstore','image','clean', 'resize'), () => {
   return process.exit(0);
 }));
-
-function processExit() {
-  process.exit(0);
-  done()
-}
 
 gulp.task('default', gulp.series('clean', gulp.parallel('svg', 'image')));
