@@ -1,12 +1,12 @@
 'use strict';
 
-const gulp = require('gulp');
-const del = require('del');
-const imagemin = require('gulp-imagemin');
-const imageResize = require('gulp-image-resize');
-const newer = require('gulp-newer');
-const rename = require('gulp-rename');
-const svgstore = require('gulp-svgstore');
+import gulp from 'gulp';
+import del from 'del';
+import imagemin from 'gulp-imagemin';
+import imageResize from 'gulp-image-resize';
+import newer from 'gulp-newer';
+import rename from 'gulp-rename';
+import svgstore from 'gulp-svgstore';
 
 const imgFiles = [
   'source/**/*.{jpg,jpeg,png}'
