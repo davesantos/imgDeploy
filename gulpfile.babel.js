@@ -9,11 +9,11 @@ import rename from 'gulp-rename';
 import svgstore from 'gulp-svgstore';
 
 const imgFiles = [
-  'source/**/*.{jpg,jpeg,png}'
+  'src/**/*.{jpg,jpeg,png}'
 ]
 
 const svgFiles = [
-  'source/**/*.svg'
+  'src/**/*.svg'
 ]
 
 const img = {
@@ -45,7 +45,7 @@ gulp.task('image', () => {
 
 gulp.task('image:web', () => {
   const stream = gulp.src(imgFiles)
-    .pipe(newer(img.dist))
+    // .pipe(newer(img.dist))
     .pipe(imagemin({
       verbose: true,
       optimizationLevel: 3,

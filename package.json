@@ -4,13 +4,13 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "del": "3.0.0",
-    "gulp": "^4.0.0",
-    "gulp-image-resize": "^0.13.0",
-    "gulp-imagemin": "4.1.0",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-image-resize": "^0.13.1",
+    "gulp-imagemin": "^6.1.0",
     "gulp-newer": "1.4.0",
     "gulp-rename": "1.4.0",
-    "gulp-svgstore": "6.1.1"
+    "gulp-svgstore": "^7.0.1"
   },
   "license": "MIT",
   "repository": {
@@ -23,7 +23,7 @@
     ]
   },
   "dependencies": {
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.15",
     "tunnel-agent": "^0.6.0"
   }
 }
