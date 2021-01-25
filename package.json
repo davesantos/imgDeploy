@@ -7,7 +7,7 @@
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-image-resize": "^0.13.1",
-    "gulp-imagemin": "^6.1.0",
+    "gulp-imagemin": "^6.2.0",
     "gulp-newer": "1.4.0",
     "gulp-rename": "1.4.0",
     "gulp-svgstore": "^7.0.1"
@@ -23,7 +23,7 @@
     ]
   },
   "dependencies": {
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "tunnel-agent": "^0.6.0"
   }
 }
