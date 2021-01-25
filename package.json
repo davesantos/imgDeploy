@@ -11,7 +11,7 @@
     "gulp-newer": "1.4.0",
     "gulp-rename": "1.4.0",
     "gulp-svgstore": "^7.0.1",
-    "yargs-parser": ">=5.0.0-security.0"
+    "yargs-parser": ">=13.1.2"
 
   },
   "license": "MIT",
